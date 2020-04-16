@@ -3,11 +3,11 @@ import React from 'react';
 function Prayer({ name, time, active }) {
 
   return (
-    <div className={ `salah ${active? 'active': ''}` }>
-      <div className="name">
+    <div className={ `prayer ${active? 'active': ''}` }>
+      <div className="prayer-name">
         { name }
       </div>
-      <div className="time">
+      <div className="prayer-time">
         { time }
       </div>
     </div>
