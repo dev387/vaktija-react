@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import PrayerModel from '../models/Prayer';
 import Prayer from './Prayer';
+import '../styles/app.css'
 
 function App() {
   const prayerTimes = [ "3:38", "5:35", "12:53", "16:48", "20:08", "21:50" ];

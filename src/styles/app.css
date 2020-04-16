@@ -1,3 +1,25 @@
+body {
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  border: 1px solid seagreen;
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.font-alt {
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
+
 .app {
-    
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: auto;
+  border: 1px solid salmon;
+}
+
+.header {
+  color: blueviolet;
 }

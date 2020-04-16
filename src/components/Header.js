@@ -5,7 +5,7 @@ function Header() {
   const currentDate= new Date();
 
   return (
-    <div>
+    <div className="header font-alt">
       <h1>{location}</h1>
       <p>{currentDate.toDateString()}</p>
     </div>
