@@ -8,14 +8,20 @@ import '../styles/app.scss'
 
 function App() {
   const [locations, setLocations] = useState([]);
+  const [selectedLocation] = useState(61);
+  const [prayerTimes, setPrayerTimes] = useState([]);
 
   useEffect(() => {
     api.getLocations().then((response) => {
       setLocations(response);
-    });
-  }, []);
+      localStorage.setItem('locations', JSON.stringify(response));
 
-  const prayerTimes = [ "3:38", "5:35", "12:53", "16:48", "20:08", "21:50" ];
+      api.getPrayerTimes({ location: selectedLocation }).then((prayers) => {
+        setPrayerTimes(prayers.vakat);
+      });
+    });
+  }, [selectedLocation]);
+
   const prayers = prayerTimes.map((salah, id) => new PrayerModel({ time: salah, id: id}));
 
   const prayersWrap = prayers.map((prayer) => {
@@ -26,7 +32,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header locations={locations}/>
+      <Header locations={locations} selected={selectedLocation}/>
       <div className="prayers">
         {prayersWrap}
       </div>
