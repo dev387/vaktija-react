@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from './Header';
-import PrayerModel from '../models/Prayer';
 import Prayer from './Prayer';
+import Footer from './Footer';
+import PrayerModel from '../models/Prayer';
 import '../styles/app.scss'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <div className="prayers">
         {prayersWrap}
       </div>
+      <Footer/>
     </div>
   );
 }
