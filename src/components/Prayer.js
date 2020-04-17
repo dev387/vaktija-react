@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/prayer.scss'
 
 function Prayer({ name, time, active }) {
 
