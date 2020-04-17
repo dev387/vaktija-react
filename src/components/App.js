@@ -8,7 +8,7 @@ import '../styles/app.scss'
 
 function App() {
   const [locations, setLocations] = useState([]);
-  const [selectedLocation] = useState(61);
+  const [selectedLocation, setLocation] = useState(61);
   const [prayerTimes, setPrayerTimes] = useState([]);
 
   useEffect(() => {
@@ -32,7 +32,10 @@ function App() {
 
   return (
     <div className="app">
-      <Header locations={locations} selected={selectedLocation}/>
+      <Header
+        locations={locations}
+        selected={selectedLocation}
+        onChangeSelected={(e) => {setLocation(e.target.value)}}/>
       <div className="prayers">
         {prayersWrap}
       </div>

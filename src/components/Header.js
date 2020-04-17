@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/header.scss'
 
-function Header({ locations, selected }) {
+function Header({ locations, selected, onChangeSelected }) {
   const location = locations[selected] || 'Mostar';
   const currentDate = new Date();
 
@@ -15,7 +15,12 @@ function Header({ locations, selected }) {
         {
           locations.length ?
             (<>
-              <select defaultValue={selected} name="locations" id="locations">
+              <select
+                id="locations"
+                name="locations"
+                defaultValue={selected}
+                onChange={onChangeSelected}
+                >
                 {locations.map(
                   (location, id) => <option key={id} value={id}>{location}</option>
                 )}
