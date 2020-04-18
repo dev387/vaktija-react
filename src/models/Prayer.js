@@ -12,7 +12,7 @@ class Salah {
     this.id = id;
     this.time = time;
     this.name = map[id];
-    this.active = id === 4;
+    this.active = false;
   }
 }
 
