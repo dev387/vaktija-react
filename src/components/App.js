@@ -18,30 +18,30 @@ function App() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
   useEffect(() => {
-    if(data.selectedLocation !== selectedLocation || date !== data.date) {
+    if (data.selectedLocation !== selectedLocation || date !== data.date) {
       api.getLocations().then((response) => {
         setLocations(response);
 
         api.getPrayerTimes({ location: selectedLocation }).then((prayers) => {
           setPrayerTimes(prayers.vakat);
 
-          helpers.storeData({locations: response, prayers: prayers.vakat, selectedLocation });
+          helpers.storeData({ locations: response, prayers: prayers.vakat, selectedLocation });
         });
       });
     }
   }, [selectedLocation, data.selectedLocation, data.date, date]);
 
   useEffect(() => {
-    if(notificationsEnabled) {
+    if (notificationsEnabled) {
       notifications.showNotification({ title: 'Vaktija', body: 'Uskoro ce aksam' });
     }
   }, [notificationsEnabled]);
 
-  const prayers = prayerTimes.map((salah, id) => new PrayerModel({ time: salah, id: id}));
+  const prayers = prayerTimes.map((salah, id) => new PrayerModel({ time: salah, id: id }));
 
   const prayersWrap = prayers.map((prayer) => {
     return (
-      <Prayer key={ prayer.id } {...prayer}/>
+      <Prayer key={prayer.id} {...prayer} />
     );
   });
 
@@ -50,16 +50,16 @@ function App() {
       <Header
         locations={locations}
         selected={selectedLocation}
-        onChangeSelected={(e) => {setLocation(e.target.value)}}/>
+        onChangeSelected={(e) => { setLocation(e.target.value) }} />
 
-        <button onClick={() => {
-          setNotificationsEnabled(notifications.requestNotifications());
-        }}>Omoguci obavijesti</button>
+      <button onClick={() => {
+        setNotificationsEnabled(notifications.requestNotifications());
+      }}>Omoguci obavijesti</button>
 
       <div className="prayers">
         {prayersWrap}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
