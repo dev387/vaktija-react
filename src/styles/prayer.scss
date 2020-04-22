@@ -12,6 +12,15 @@
   justify-content: space-between;
   border-radius: 4px;
 
+  .time-wrapper {
+    display: flex;
+
+    .remaining {
+      opacity: 0.25;
+      padding: 0 5px;
+    }
+  }
+
   &.active {
     border-color: #aaa;
     color: #272727;

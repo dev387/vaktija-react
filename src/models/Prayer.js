@@ -1,3 +1,4 @@
+import { format, differenceInMinutes } from 'date-fns';
 const map = {
   0: 'Zora',
   1: 'Sabah',
@@ -9,10 +10,16 @@ const map = {
 
 class Salah {
   constructor({ time, id }) {
+    const [h, m] = time.split(':');
+    const date = new Date();
+    date.setHours(h);
+    date.setMinutes(m);
+    
     this.id = id;
-    this.time = time;
+    this.time = format(date, 'HH:mm');
     this.name = map[id];
     this.active = false;
+    this.remaining = differenceInMinutes(date, new Date());
   }
 }
 
