@@ -3,6 +3,7 @@ import api from '../services/api';
 import helpers from '../services/helpers';
 import Header from './Header';
 import Prayer from './Prayer';
+import NextDaysPrayers from './NextDaysPrayers';
 import Footer from './Footer';
 import PrayerModel from '../models/Prayer';
 // import notifications from '../services/notifications';
@@ -17,6 +18,8 @@ function App() {
   const [date] = useState(helpers.getFullDate(new Date()))
   // const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
+
+  // Reload data on location or date change
   useEffect(() => {
     if (data.selectedLocation !== selectedLocation || date !== data.date) {
       api.getLocations().then((response) => {
@@ -59,6 +62,7 @@ function App() {
       <div className="prayers">
         {prayersWrap}
       </div>
+      <NextDaysPrayers />
       <Footer />
     </div>
   );
