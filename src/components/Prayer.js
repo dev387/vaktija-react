@@ -4,7 +4,7 @@ import '../styles/prayer.scss'
 
 const formatRemaining = (diff) => {
   const minutes = diff % 60;
-  const hours = (diff / 60).toFixed(0);
+  const hours = Math.floor(diff / 60);
   const date = new Date();
   date.setMinutes(minutes);
   date.setHours(hours);
