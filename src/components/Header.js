@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { format } from 'date-fns';
 
 import Menu from './Menu';
 import helpers from '../services/helpers';
@@ -14,7 +15,7 @@ function Header({ onChangeSelected }) {
   const [selectedLocation, setLocation] = useState(data.selectedLocation || 61);
   const [locations, setLocations] = useState(data.locations || []);
   const location = locations[selectedLocation] || 'Mostar';
-  const currentDate = new Date();
+  const currentDate = format(new Date(), 'dd.MM.yyyy');
 
   const changeLocation = (e) => {
     setLocation(e.target.value);
@@ -35,7 +36,7 @@ function Header({ onChangeSelected }) {
     <div className="header font-alt">
       <div className="navigation">
         <Menu />
-        {location}, {currentDate.toDateString()}
+        {location}, {currentDate}
       </div>
       {
         locations.length ?
