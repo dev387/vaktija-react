@@ -4,6 +4,13 @@
   padding: 5px;
   flex-direction: column;
 
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
   .header-info {
     padding: 10px 0;
   }
@@ -40,7 +47,6 @@
 
   .header-menu {
     display: flex;
-    width: 100%;
 
     a {
       padding: 5px 15px;

@@ -35,8 +35,6 @@ function Header({ onChangeSelected }) {
     <div className="header font-alt">
       <div className="navigation">
         <Menu />
-      </div>
-      <div className="header-info">
         {location}, {currentDate.toDateString()}
       </div>
       {
