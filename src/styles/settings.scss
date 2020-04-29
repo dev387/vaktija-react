@@ -1,0 +1,39 @@
+.settings {
+  padding: 5px;
+
+  .title-wrapper {
+    display: flex;
+    font-weight: bold;
+    width: auto;
+    color: #242424;
+    padding-bottom: 5px;
+  }
+
+  .label {
+    flex-basis: 100%;
+    margin-bottom: 0;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: wrap;
+
+    .check-box {
+      flex-basis: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .range {
+      flex-basis: 100%;
+      outline: none;
+    }
+  }
+
+  .setting {
+    &.disabled {
+      opacity: 0.25;
+    }
+  }
+}

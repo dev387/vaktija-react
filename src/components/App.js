@@ -1,65 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import api from '../services/api';
-import helpers from '../services/helpers';
+// Import 3rd party packages
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+// Import components and services
 import Header from './Header';
-import Prayer from './Prayer';
 import Footer from './Footer';
-import PrayerModel from '../models/Prayer';
-// import notifications from '../services/notifications';
+import Dashboard from './Dashboard';
+import Settings from './Settings';
+import helpers from '../services/helpers';
+
+// Import styles
 import '../styles/app.scss'
 
-function App() {
+const App = () => {
   const data = helpers.getData();
 
-  const [locations, setLocations] = useState(data.locations || []);
-  const [selectedLocation, setLocation] = useState(data.selectedLocation || 61);
-  const [prayerTimes, setPrayerTimes] = useState(data.prayers || []);
-  const [date] = useState(helpers.getFullDate(new Date()))
-  // const [notificationsEnabled, setNotificationsEnabled] = useState(false);
-
-  useEffect(() => {
-    if (data.selectedLocation !== selectedLocation || date !== data.date) {
-      api.getLocations().then((response) => {
-        setLocations(response);
-
-        api.getPrayerTimes({ location: selectedLocation }).then((prayers) => {
-          setPrayerTimes(prayers.vakat);
-
-          helpers.storeData({ locations: response, prayers: prayers.vakat, selectedLocation });
-        });
-      });
-    }
-  }, [selectedLocation, data.selectedLocation, data.date, date]);
-
-  // useEffect(() => {
-  //   if (notificationsEnabled) {
-  //     notifications.showNotification({ title: 'Vaktija', body: 'Uskoro ce aksam' });
-  //   }
-  // }, [notificationsEnabled]);
-
-  const prayers = prayerTimes.map((salah, id) => new PrayerModel({ time: salah, id: id }));
-
-  const prayersWrap = prayers.map((prayer) => {
-    return (
-      <Prayer key={prayer.id} {...prayer} />
-    );
-  });
+  // Reload data on location or date change
+  const [location, setlocation] = useState(data.selectedLocation || 61);
+  const onChangeSelected = (location) => {
+    setlocation(location);
+  };
 
   return (
     <div className="app">
-      <Header
-        locations={locations}
-        selected={selectedLocation}
-        onChangeSelected={(e) => { setLocation(e.target.value) }} />
+      <Router>
+        <Header onChangeSelected={onChangeSelected} />
 
-      {/* <button onClick={() => {
-        setNotificationsEnabled(notifications.requestNotifications());
-      }}>Omoguci obavijesti</button> */}
+        <Route exact path="/">
+          <Dashboard location={location} />
+        </Route>
+        <Route path="/settings" component={Settings} />
 
-      <div className="prayers">
-        {prayersWrap}
-      </div>
-      <Footer />
+        <Footer />
+      </Router>
     </div>
   );
 }

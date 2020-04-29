@@ -5,6 +5,20 @@ const storeData = ({ locations, selectedLocation, prayers }) => {
   localStorage.setItem('date', JSON.stringify(getFullDate(new Date())));
 };
 
+const storeDataByKey = ({ key, value }) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
+
+const getDataByKey = (key) => {
+  let value = localStorage.getItem(key);
+
+  if (value !== null) {
+    return JSON.parse(value);
+  }
+
+  return false;
+};
+
 const getData = () => {
   let locations = localStorage.getItem('locations');
   let selectedLocation = localStorage.getItem('selectedLocation');
@@ -45,4 +59,6 @@ export default {
   storeData,
   getData,
   getFullDate,
+  storeDataByKey,
+  getDataByKey,
 };
