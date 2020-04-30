@@ -17,17 +17,23 @@ const App = () => {
 
   // Reload data on location or date change
   const [location, setlocation] = useState(data.selectedLocation || 61);
+  const [islamicDate, setiIslamicDate] = useState(null)
   const onChangeSelected = (location) => {
     setlocation(location);
+  };
+
+  const updateDate = (date) => {
+    const [islamicDate] = date;
+    setiIslamicDate(islamicDate)
   };
 
   return (
     <div className="app">
       <Router>
-        <Header onChangeSelected={onChangeSelected} />
+        <Header islamicDate={islamicDate} onChangeSelected={onChangeSelected} />
 
         <Route exact path="/">
-          <Dashboard location={location} />
+          <Dashboard location={location} onDataChange={updateDate} />
         </Route>
         <Route path="/settings" component={Settings} />
 

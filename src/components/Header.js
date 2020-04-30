@@ -5,16 +5,15 @@ import Menu from './Menu';
 import helpers from '../services/helpers';
 import api from '../services/api';
 
-import '../styles/header.scss'
+import '../styles/header.scss';
 
-function Header({ onChangeSelected }) {
+function Header({ onChangeSelected, islamicDate }) {
   const data = {
     locations: helpers.getDataByKey('locations'),
     selectedLocation: helpers.getDataByKey('selectedLocation'),
   }
   const [selectedLocation, setLocation] = useState(data.selectedLocation || 61);
   const [locations, setLocations] = useState(data.locations || []);
-  const location = locations[selectedLocation] || 'Mostar';
   const currentDate = format(new Date(), 'dd.MM.yyyy');
 
   const changeLocation = (e) => {
@@ -25,12 +24,12 @@ function Header({ onChangeSelected }) {
 
   useEffect(() => {
     if (!locations || !locations.length) {
-      const fetchLocations = async() => {
+      const fetchLocations = async () => {
         const response = api.getLocations();
         setLocations(response);
         helpers.storeDataByKey({ key: 'locations', value: response });
       };
-      
+
       fetchLocations();
     }
   }, [locations]);
@@ -39,7 +38,10 @@ function Header({ onChangeSelected }) {
     <div className="header font-alt">
       <div className="navigation">
         <Menu />
-        {location}, {currentDate}
+        <div className="header-info">
+          <div>{islamicDate}</div>
+          <div>{currentDate}</div>
+        </div>
       </div>
       {
         locations.length ?

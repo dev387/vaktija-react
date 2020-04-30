@@ -9,10 +9,11 @@ const getPrayerTimes = async({
   day = (new Date()).getDate(),
   month = (new Date()).getMonth() + 1,
   year = (new Date()).getFullYear(),
-  location
+  location,
  }) => {
-  return fetch(`${api}/${location}/${year}/${month}/${day}`).then(response => response.json());
-};
+   const response = await fetch(`${api}/${location}/${year}/${month}/${day}`);
+   return response.json();
+ }
 
 export default {
   getLocations,

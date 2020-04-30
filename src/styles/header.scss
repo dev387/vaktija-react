@@ -12,7 +12,9 @@
   }
 
   .header-info {
-    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .locations-wrapper {

@@ -7,7 +7,7 @@ import PrayerModel from '../models/Prayer';
 
 import '../styles/dashboard.scss';
 
-export default ({ location }) => {
+export default ({ location, onDataChange }) => {
   const data = {
     prayers: helpers.getDataByKey('prayers'),
     location: helpers.getDataByKey('selectedLocation'),
@@ -17,13 +17,14 @@ export default ({ location }) => {
 
   useEffect(() => {
     const fetchData = async() => {
-      const { vakat } = await api.getPrayerTimes({ location });
+      const { vakat, datum } = await api.getPrayerTimes({ location });
       setPrayerTimes(vakat);
+      onDataChange(datum);
       helpers.storeDataByKey({ key: 'prayers', value: vakat });
     };
 
     fetchData();
-  }, [location]);
+  }, [location, onDataChange]);
 
   const prayers = prayerTimes.map((salah, id) => new PrayerModel({ time: salah, id: id }));
 
