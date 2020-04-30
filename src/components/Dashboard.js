@@ -14,13 +14,15 @@ export default ({ location }) => {
   }
 
   const [prayerTimes, setPrayerTimes] = useState(data.prayers || []);
-  // const [date] = useState(helpers.getFullDate(new Date()));
 
   useEffect(() => {
-    api.getPrayerTimes({ location }).then((prayers) => {
-      setPrayerTimes(prayers.vakat);
-      helpers.storeDataByKey({ key: 'prayers', value: prayers.vakat });
-    });
+    const fetchData = async() => {
+      const { vakat } = await api.getPrayerTimes({ location });
+      setPrayerTimes(vakat);
+      helpers.storeDataByKey({ key: 'prayers', value: vakat });
+    };
+
+    fetchData();
   }, [location]);
 
   const prayers = prayerTimes.map((salah, id) => new PrayerModel({ time: salah, id: id }));

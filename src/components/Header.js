@@ -25,10 +25,13 @@ function Header({ onChangeSelected }) {
 
   useEffect(() => {
     if (!locations || !locations.length) {
-      api.getLocations().then((response) => {
+      const fetchLocations = async() => {
+        const response = api.getLocations();
         setLocations(response);
         helpers.storeDataByKey({ key: 'locations', value: response });
-      });
+      };
+      
+      fetchLocations();
     }
   }, [locations]);
 
