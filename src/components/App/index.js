@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Import components and services
-import Header from './Header';
-import Footer from './Footer';
-import Dashboard from './Dashboard';
-import Settings from './Settings';
-import helpers from '../services/helpers';
+import Header from '../Header';
+import Footer from '../Footer';
+import Dashboard from '../Dashboard';
+import Settings from '../Settings';
+import helpers from '../../services/helpers';
 
 // Import styles
-import '../styles/app.scss'
+import '../../styles/app.scss'
 
 const App = () => {
   const data = helpers.getData();

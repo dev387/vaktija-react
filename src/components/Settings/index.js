@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 // Import components and services
-import NotificationSettings from './NotificationsSettings';
-import notifications from '../services/notifications';
+import NotificationSettings from '../NotificationsSettings';
+import notifications from '../../services/notifications';
 
 // Import styles
-import '../styles/settings.scss';
+import '../../styles/settings.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default () => {

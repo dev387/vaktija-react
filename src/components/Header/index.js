@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 
-import Menu from './Menu';
-import helpers from '../services/helpers';
-import api from '../services/api';
+import Menu from '../Menu';
+import helpers from '../../services/helpers';
+import api from '../../services/api';
 
-import '../styles/header.scss';
+import '../../styles/header.scss';
 
 function Header({ onChangeSelected, islamicDate }) {
   const data = {

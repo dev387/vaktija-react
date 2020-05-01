@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import api from '../services/api';
-import helpers from '../services/helpers';
-import Prayer from './Prayer';
+import api from '../../services/api';
+import helpers from '../../services/helpers';
+import Prayer from '../Prayer';
 // import NextDaysPrayers from './NextDaysPrayers';
-import PrayerModel from '../models/Prayer';
+import PrayerModel from '../../models/Prayer';
 
-import '../styles/dashboard.scss';
+import '../../styles/dashboard.scss';
 
 export default ({ location, onDataChange }) => {
   const data = {
