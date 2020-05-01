@@ -5,7 +5,7 @@ import Menu from '../Menu';
 import helpers from '../../services/helpers';
 import api from '../../services/api';
 
-import '../../styles/header.scss';
+import './header.scss';
 
 function Header({ onChangeSelected, islamicDate }) {
   const data = {

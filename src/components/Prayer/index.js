@@ -1,6 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
-import '../../styles/prayer.scss'
+import './prayer.scss'
 
 const formatRemaining = (diff) => {
   const minutes = diff % 60;

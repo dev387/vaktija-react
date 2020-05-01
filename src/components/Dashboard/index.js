@@ -5,7 +5,7 @@ import Prayer from '../Prayer';
 // import NextDaysPrayers from './NextDaysPrayers';
 import PrayerModel from '../../models/Prayer';
 
-import '../../styles/dashboard.scss';
+import './dashboard.scss';
 
 export default ({ location, onDataChange }) => {
   const data = {

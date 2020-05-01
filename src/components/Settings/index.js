@@ -5,7 +5,7 @@ import NotificationSettings from '../NotificationsSettings';
 import notifications from '../../services/notifications';
 
 // Import styles
-import '../../styles/settings.scss';
+import './settings.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default () => {

@@ -10,7 +10,7 @@ import Settings from '../Settings';
 import helpers from '../../services/helpers';
 
 // Import styles
-import '../../styles/app.scss'
+import './app.scss';
 
 const App = () => {
   const data = helpers.getData();
