@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { format } from 'date-fns';
 
 import Menu from '../Menu';
+import Clock from '../Clock';
 import helpers from '../../services/helpers';
 import api from '../../services/api';
 
@@ -14,7 +14,6 @@ function Header({ onChangeSelected, islamicDate }) {
   }
   const [selectedLocation, setLocation] = useState(data.selectedLocation || 61);
   const [locations, setLocations] = useState(data.locations || []);
-  const currentDate = format(new Date(), 'dd.MM.yyyy');
 
   const changeLocation = (e) => {
     setLocation(e.target.value);
@@ -39,8 +38,10 @@ function Header({ onChangeSelected, islamicDate }) {
       <div className="navigation">
         <Menu />
         <div className="header-info">
-          <div>{islamicDate}</div>
-          <div>{currentDate}</div>
+          {islamicDate}
+        </div>
+        <div className="clock-wrapper">
+          <Clock />
         </div>
       </div>
       {
