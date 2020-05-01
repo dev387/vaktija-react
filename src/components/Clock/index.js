@@ -6,20 +6,21 @@ import { format } from 'date-fns';
 import './clock.scss';
 
 const Clock = () => {
+  const timeFormat = 'HH : mm : ss';
 
-  const currentTime = format(new Date(), 'HH:mm:ss');
+  const currentTime = format(new Date(), timeFormat);
   const currentDate = format(new Date(), 'dd.MM.yyyy');
-  const [date, setDate] = useState(currentTime);
+  const [time, setTime] = useState(currentTime);
 
   useEffect(() => {
     setInterval(()=> {
-      setDate(format(new Date(), 'HH:mm:ss'));
+      setTime(format(new Date(), timeFormat));
     }, 1000);
   });
 
   return (
     <div className="clock">
-      <div>{date}</div>
+      <div>{time}</div>
       <div>{currentDate}</div>
     </div>
   );
