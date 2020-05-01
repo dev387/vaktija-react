@@ -28,9 +28,9 @@ export default ({ location, onDataChange }) => {
 
   const prayers = prayerTimes.map((salah, id) => new PrayerModel({ time: salah, id: id }));
 
-  const prayersWrap = prayers.map((prayer) => {
+  const prayersWrap = prayers.map((prayer, index) => {
     return (
-      <Prayer key={prayer.id} {...prayer} />
+      <Prayer key={prayer.id} {...prayer} nextPrayer={prayers[index+1] || prayers[0]} />
     );
   });
 
