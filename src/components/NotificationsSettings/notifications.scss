@@ -9,11 +9,29 @@
     display: flex;
     flex-wrap: wrap;
 
-    .check-box {
+    .check-box-wrapper {
       flex-basis: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      .label {
+        font-size: 14px;
+      }
+
+      .check-box {
+        display: none;
+      }
+
+      .icon {
+        margin-bottom: unset;
+        font-size: 32px;
+        line-height: 0;
+      }
+
+      .icon-toggle-on {
+        color: #007bff;
+      }
     }
 
     .range {

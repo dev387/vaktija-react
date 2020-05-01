@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './notifications.scss';
+import '../../static/scss/fontelo.scss';
 
 const NotificationSettings = ({ isDisabled, id, title }) => {
   const [duration, setDuration] = useState(15);
@@ -9,9 +10,10 @@ const NotificationSettings = ({ isDisabled, id, title }) => {
   return (
     <div className={`notification ${isDisabled ? 'disabled' : ''}`}>
       <div className="slider">
-        <div className="check-box">
+        <div className="check-box-wrapper">
           <label className="label" htmlFor={id}>{title}</label>
           <input
+            className="check-box"
             checked={checked}
             disabled={isDisabled}
             id={id}
@@ -20,6 +22,7 @@ const NotificationSettings = ({ isDisabled, id, title }) => {
               setCheckBoxDisabled(!e.target.checked);
             }}
             type="checkbox" />
+            <label htmlFor={id} className={`icon icon-toggle-${checked? 'on': 'off'}`}></label>
         </div>
         <input
           className="custom-range range"
