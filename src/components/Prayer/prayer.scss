@@ -11,6 +11,8 @@
   color: #313131;
   justify-content: space-between;
   border-radius: 4px;
+  font-size: 13px;
+  font-weight: normal;
 
   .time-wrapper {
     display: flex;
@@ -24,8 +26,8 @@
   &.active {
     border-color: #aaa;
     color: #272727;
-    font-size: 1.1em;
-    font-weight: normal;
+    font-size: 1.25em;
+    font-weight: bold;
   }
 }
 
