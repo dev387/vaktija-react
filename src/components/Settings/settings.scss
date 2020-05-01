@@ -13,27 +13,4 @@
     flex-basis: 100%;
     margin-bottom: 0;
   }
-
-  .slider {
-    display: flex;
-    flex-wrap: wrap;
-
-    .check-box {
-      flex-basis: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .range {
-      flex-basis: 100%;
-      outline: none;
-    }
-  }
-
-  .setting {
-    &.disabled {
-      opacity: 0.25;
-    }
-  }
 }

@@ -30,10 +30,15 @@ export default () => {
   return (
     <div className="settings">
       <div className="title-wrapper">
-        <div className="title">Postavke</div>
+        <div className="title">Obavijesti</div>
       </div>
       <NotificationButton />
-      <NotificationSettings isDisabled={!notificationsEnabled} />
+      <NotificationSettings id={0} title={'Zora'} isDisabled={!notificationsEnabled} />
+      <NotificationSettings id={1} title={'Sabah'} isDisabled={!notificationsEnabled} />
+      <NotificationSettings id={2} title={'Podne'} isDisabled={!notificationsEnabled} />
+      <NotificationSettings id={3} title={'Ikindija'} isDisabled={!notificationsEnabled} />
+      <NotificationSettings id={4} title={'Akšam'} isDisabled={!notificationsEnabled} />
+      <NotificationSettings id={5} title={'Jacija'} isDisabled={!notificationsEnabled} />
     </div>
   );
 };

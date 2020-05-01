@@ -1,0 +1,43 @@
+.notification {
+  margin-bottom: 20px;
+
+  &.disabled {
+    opacity: 0.25;
+  }
+
+  .slider {
+    display: flex;
+    flex-wrap: wrap;
+
+    .check-box {
+      flex-basis: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .range {
+      flex-basis: 100%;
+      outline: none;
+      margin-top: 10px;
+
+      &::-webkit-slider-runnable-track {
+        height: 15px;
+      }
+
+      &::-moz-range-track {
+        height: 15px;
+      }
+
+      &::-moz-range-thumb {
+        height: 25px;
+        width: 25px;
+      }
+
+      &::-webkit-slider-thumb {
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+}
