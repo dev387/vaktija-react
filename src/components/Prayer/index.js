@@ -11,13 +11,17 @@ const formatRemaining = (diff) => {
   return format(date, 'HH:mm');
 };
 
-const isPrayerActive = ({ nextPrayer, remaining }) => {
-  return remaining <= 0 && nextPrayer.remaining > 0;
+const isPrayerActive = ({ nextPrayer, remaining, id }) => {
+  return (
+    (remaining <= 0 && nextPrayer.remaining > 0)
+    || (id === 5 && remaining < 0)
+    || (id === 5 && nextPrayer.remaining > 0)
+  );
 };
 
-function Prayer({ name, time, remaining, nextPrayer }) {
+function Prayer({ name, time, remaining, nextPrayer, id }) {
   return (
-    <div className={`prayer ${isPrayerActive({remaining, nextPrayer}) ? 'active' : ''}`}>
+    <div className={`prayer ${isPrayerActive({ remaining, nextPrayer, id }) ? 'active' : ''}`}>
       <div className="prayer-name">
         {name}
       </div>
