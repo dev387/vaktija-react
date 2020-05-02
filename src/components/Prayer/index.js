@@ -19,14 +19,13 @@ const isPrayerActive = ({ nextPrayer, timeRemaining, id }) => {
   );
 };
 
-const updateTimeRemaining = ({ setTimeRemaining, time }) => {
+const updateTimeRemaining = (time) => {
   const [h, m] = time.split(':');
   const date = new Date();
   date.setHours(h);
   date.setMinutes(m);
 
-  const diff = differenceInMinutes(date, new Date());
-  setTimeRemaining(diff);
+  return differenceInMinutes(date, new Date());
 }
 
 function Prayer({ name, time, remaining, nextPrayer, id }) {
@@ -34,7 +33,7 @@ function Prayer({ name, time, remaining, nextPrayer, id }) {
 
   useEffect(() => {
     let timeoutId = setInterval(() => {
-      updateTimeRemaining({ setTimeRemaining, time });
+      setTimeRemaining(updateTimeRemaining(time));
     }, 15000);
 
     return () => {
