@@ -18,7 +18,6 @@ class Salah {
     this.id = id;
     this.time = format(date, 'HH:mm');
     this.name = map[id];
-    this.active = false;
     this.remaining = differenceInMinutes(date, new Date());
   }
 }

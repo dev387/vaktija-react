@@ -1,5 +1,5 @@
-import React from 'react';
-import { format } from 'date-fns';
+import React, { useState, useEffect } from 'react';
+import { format, differenceInMinutes } from 'date-fns';
 import './prayer.scss'
 
 const formatRemaining = (diff) => {
@@ -11,23 +11,47 @@ const formatRemaining = (diff) => {
   return format(date, 'HH:mm');
 };
 
-const isPrayerActive = ({ nextPrayer, remaining, id }) => {
+const isPrayerActive = ({ nextPrayer, timeRemaining, id }) => {
   return (
-    (remaining <= 0 && nextPrayer.remaining > 0)
-    || (id === 5 && remaining < 0)
+    (timeRemaining <= 0 && nextPrayer.remaining > 0)
+    || (id === 5 && timeRemaining < 0)
     || (id === 5 && nextPrayer.remaining > 0)
   );
 };
 
+const updateTimeRemaining = ({ setTimeRemaining, time }) => {
+  const [h, m] = time.split(':');
+  const date = new Date();
+  date.setHours(h);
+  date.setMinutes(m);
+
+  const diff = differenceInMinutes(date, new Date());
+  setTimeRemaining(diff);
+}
+
 function Prayer({ name, time, remaining, nextPrayer, id }) {
+  const [timeRemaining, setTimeRemaining] = useState(remaining)
+
+  useEffect(() => {
+    let timeoutId = setInterval(() => {
+      updateTimeRemaining({ setTimeRemaining, time });
+    }, 15000);
+
+    return () => {
+      console.info('Intervals cleaned');
+      clearInterval(timeoutId);
+    };
+  })
+  
+
   return (
-    <div className={`prayer ${isPrayerActive({ remaining, nextPrayer, id }) ? 'active' : ''}`}>
+    <div className={`prayer ${isPrayerActive({ timeRemaining, nextPrayer, id }) ? 'active' : ''}`}>
       <div className="prayer-name">
         {name}
       </div>
       <div className="time-wrapper">
         <div className="remaining">
-          {remaining > 0 ? `${formatRemaining(remaining)}` : ''}
+          {timeRemaining > 0 ? `${formatRemaining(timeRemaining)}` : ''}
         </div>
         <div className="prayer-time">
           {time}
