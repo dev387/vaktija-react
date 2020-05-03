@@ -24,7 +24,7 @@ function Header({ onChangeSelected, islamicDate }) {
   useEffect(() => {
     if (!locations || !locations.length) {
       const fetchLocations = async () => {
-        const response = api.getLocations();
+        const response = await api.getLocations();
         setLocations(response);
         helpers.storeDataByKey({ key: 'locations', value: response });
       };
