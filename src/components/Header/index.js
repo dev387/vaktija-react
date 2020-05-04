@@ -48,7 +48,7 @@ function Header({ onChangeSelected, islamicDate }) {
         locations.length ?
           (<>
             <select
-              className="form-control"
+              className="custom-select"
               name="locations"
               defaultValue={selectedLocation}
               onChange={changeLocation}
