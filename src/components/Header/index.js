@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import Menu from '../Menu';
 import Clock from '../Clock';
 import helpers from '../../services/helpers';
 import api from '../../services/api';
@@ -36,31 +35,32 @@ function Header({ onChangeSelected, islamicDate }) {
   return (
     <div className="header font-alt">
       <div className="navigation">
-        <Menu />
-        <div className="header-info">
-          {islamicDate}
+        <div className="selector">
+          {
+            locations.length ?
+              (<>
+                <select
+                  className="custom-select"
+                  name="locations"
+                  defaultValue={selectedLocation}
+                  onChange={changeLocation}
+                >
+                  {locations.map(
+                    (location, id) => <option key={id} value={id}>{location}</option>
+                  )}
+                </select>
+              </>)
+              :
+              ('Ucitavanje...')
+          }
         </div>
-        <div className="clock-wrapper">
-          <Clock />
+        <div>
+          <div className="header-date-time">
+            {islamicDate}
+            <Clock />
+          </div>
         </div>
       </div>
-      {
-        locations.length ?
-          (<>
-            <select
-              className="custom-select"
-              name="locations"
-              defaultValue={selectedLocation}
-              onChange={changeLocation}
-            >
-              {locations.map(
-                (location, id) => <option key={id} value={id}>{location}</option>
-              )}
-            </select>
-          </>)
-          :
-          ('Ucitavanje...')
-      }
     </div>
   );
 }
